@@ -1,6 +1,9 @@
 #! /bin/bash
 
-# Display git status and confirm for git add
+# Note: Use this within a git directory
+# This script automates the version control process, As user can just run this script and avoid writing repetitive commands. 
+
+# Displays git status and confirms git add
 git status
 read -p "Add files to git? Y/N: " ANSWER
 

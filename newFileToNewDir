@@ -1,0 +1,11 @@
+#! /bin/bash
+
+# Get directory and file info
+read -p "New directory name: " DIR
+read -p "New directory location: " LOC
+read -p "New file/files alongwith extension: " ANSWER
+
+# Creates new directory and moves new files to that directory 
+mkdir $LOC$DIR
+touch $LOC$DIR/${ANSWER}
+

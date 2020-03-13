@@ -1,9 +1,0 @@
-#! /bin/bash
-
-# Create a New Directory and move desired file to it
-read -p "Directory name: " DIR
-# read -p "Directory location: " LOC 
-# read -p "File Location: " FILE
-mkdir $DIR
-# mv $FILE ./$LOC$DIR
-# echo "$FILE moved to $LOC$DIR"

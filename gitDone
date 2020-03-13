@@ -1,11 +1,21 @@
 #! /bin/bash
 
-# Note: Use this within a git directory
+
 # This script automates the version control process, As user can just run this script and avoid writing repetitive commands. 
 
-# Displays git status and confirms git add
-git status
-read -p "Add files to git? Y/N: " ANSWER
+# Checks if repo is a git repo or not
+ISGITREPO=$(git rev-parse --is-inside-work-tree)
+
+# Executes process based on check
+if [ $ISGITREPO ] 
+then
+  git status
+  read -p "Add files to git? Y/N: " ANSWER
+else 
+  echo "Not a git repository!"
+  exit
+fi
+
 
 
 # Function to confirm push and then push files to github

@@ -1,2 +1,2 @@
-# My-Bash-Scripts
-Contains all Bash scripts created to avoid repetitive commands.
+# MY BASH SCRIPTS
+Contains all bash scripts created to avoid repetitive commands

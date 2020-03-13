@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# Prompts for file name and new dir name
+read -p "Tar file name: " TARFILE
+read -p "New dir name: " DIRNAME
+
+# Creates new dir, uncompressed the tar file and moves it into new dir
+mkdir ./$DIRNAME
+UNTAR=$(tar xvf $TARFILE)
+mv $UNTAR ./$DIRNAME 
+
+echo "Uncompressed ${TARFILE} to ${DIRNAME}"  

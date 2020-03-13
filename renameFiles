@@ -1,0 +1,15 @@
+#! /bin/bash
+
+#TO RENAME FILES
+read -p "New name: " NEWNAME
+read -p "File type: " TYPE
+
+FILES=$(ls *$TYPE)
+
+NEW=$NEWNAME
+
+for FILE in $FILES  
+  do
+    echo "Renaming $FILE to $NEWNAME$FILE"
+    mv $FILE $NEWNAME$FILE
+done

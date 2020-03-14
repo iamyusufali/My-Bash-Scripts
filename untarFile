@@ -1,12 +1,13 @@
 #! /bin/bash
 
-# Prompts for file name and new dir name
-read -p "Tar file name: " TARFILE
+# Prompts for file name and new dir name and location
+read -p "Tar file name: " TARFILE 
 read -p "New dir name: " DIRNAME
+read -p "New dir location: " DIRLOC
 
-# Creates new dir, uncompressed the tar file and moves it into new dir
-mkdir ./$DIRNAME
-UNTAR=$(tar xvf $TARFILE)
-mv $UNTAR ./$DIRNAME 
+# Creates new dir, uncompresses the tar file and moves it into new dir
+mkdir ${DIRLOC}${DIRNAME}
+UNTAR=$(tar xvf ${TARFILE})
+mv $UNTAR ${DIRLOC}${DIRNAME}
 
-echo "Uncompressed ${TARFILE} to ${DIRNAME}"  
+echo "Uncompressed ${TARFILE} to ${DIRLOC}${DIRNAME}"  

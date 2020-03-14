@@ -20,6 +20,7 @@ fi
 
 # Function to confirm push and then push files to github
 function gitPush() {
+  echo
   read -p "Push to github? Y/N: " PUSHANSWER
   echo
   git push

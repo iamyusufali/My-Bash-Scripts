@@ -32,7 +32,6 @@ function gitPush() {
 function commit() {
   echo
   read -p "Enter commit msg: " MSG
-  echo
   
   # If else statement
   if [ "${MSG}" ] 
@@ -42,7 +41,6 @@ function commit() {
     case "$COMMITANSWER" in
       [yY] | [yY][eE][sS])
         git commit -m "${MSG}"
-        echo
         gitPush
         ;;
       [nN] | [nN][oO])

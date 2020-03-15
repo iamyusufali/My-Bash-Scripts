@@ -12,7 +12,6 @@ then
   git status
   read -p "Add files to git? Y/N: " ANSWER
 else 
-  echo "Not a git repository!"
   exit
 fi
 
@@ -56,7 +55,9 @@ function commit() {
 # Check confirmation for git add and then add files to github
 case "$ANSWER" in
   [yY] | [yY][eE][sS])
-    git add .
+    echo
+    read -p "Enter file name: " FILE
+    git add $FILE
     echo
     echo "Files have been added"
     commit

@@ -7,11 +7,13 @@ read -p "Enter directory name: " MAINDIR
 
 # Add Indentation using RegEx pattern
 function addIndentation () {
-  sed -i '/[a-z](){/ s/(){/ () {/g' $FILE
+  sed -i '/[a-zA-Z](){/ s/(){/ () {/g' $FILE
   sed -i '/{[a-z]/ s/{/{ /g' $FILE
+  sed -i 's/={/= {/g' $FILE
+  sed -i 's/=\[/= \[/g' $FILE
   sed -i '/["]}/ s/}/ }/g' $FILE
   sed -i '/[a-z]:["]/ s/:/: /g' $FILE
-  sed -i '/,[a-z]/ s/,/, /g' $FILE
+  sed -i '/,[a-z"]/ s/,/, /g' $FILE
 }
 
 # Check if the directory entered exists. 

@@ -5,39 +5,13 @@
 read -p "Enter directory name: " MAINDIR
 
 
-# To correct unwanted space 
-# function correctUnwantedSpace () {
-#   sed -i 's|  (| (|g' $FILE
-#   sed -i 's|)  |) |g' $FILE
-#   sed -i 's|  }| }|g' $FILE
-#   sed -i 's|{  |{ |g' $FILE
-#   sed -i 's|=  {|= {|g' $FILE
-#   sed -i 's|,  |, |g' $FILE
-#   sed -i 's|:  |: |g' $FILE
-#   sed -i 's| ;|;|g' $FILE
-#   sed -i 's| \.|.|g' $FILE
-#   sed -i 's| }|}|g' $FILE
-# }
-
-
-# # To add Indentation
-# function addIndentation () {
-#   sed -i 's|(| (|g' $FILE
-#   sed -i 's|)|) |g' $FILE
-#   sed -i 's|}| }|g' $FILE
-#   sed -i 's|{|{ |g' $FILE
-#   sed -i 's|={|= {|g' $FILE
-#   sed -i 's|,|, |g' $FILE
-#   sed -i 's|:|: |g' $FILE
-#   correctUnwantedSpace
-# }
-
-
 # Add Indentation using RegEx pattern
 function addIndentation () {
   sed -i '/[a-z](){/ s/(){/ () {/g' $FILE
   sed -i '/{[a-z]/ s/{/{ /g' $FILE
   sed -i '/["]}/ s/}/ }/g' $FILE
+  sed -i '/[a-z]:["]/ s/:/: /g' $FILE
+  sed -i '/,[a-z]/ s/,/, /g' $FILE
 }
 
 # Check if the directory entered exists. 

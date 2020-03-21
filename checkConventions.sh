@@ -5,16 +5,20 @@
 read -p "Enter directory name: " MAINDIR
 
 
-# Add Indentation using RegEx pattern
+
+# Add Indentation using RegEx patterns
 function addIndentation () {
-  sed -i '/[a-zA-Z](){/ s/(){/ () {/g' $FILE
-  sed -i '/{[a-z]/ s/{/{ /g' $FILE
-  sed -i 's/={/= {/g' $FILE
-  sed -i 's/=\[/= \[/g' $FILE
-  sed -i '/["]}/ s/}/ }/g' $FILE
-  sed -i '/[a-z]:["]/ s/:/: /g' $FILE
-  sed -i '/,[a-z"]/ s/,/, /g' $FILE
+  sed -i "/[a-zA-Z](){/ s/(){/ () {/g" $FILE
+  sed -i "/{[a-zA-Z\"']/ s/{/{ /g" $FILE
+  sed -i "/[a-zA-Z\"']}/ s/}/ }/g" $FILE
+  sed -i "/\[[a-zA-Z\"']/ s/\[/\[ /g" $FILE
+  sed -i "/[a-zA-Z\"']\]/ s/\]/ \]/g" $FILE
+  sed -i "s/={/= {/g" $FILE
+  sed -i "s/=\[/= \[/g" $FILE
+  sed -i "/[a-z]:[\"']/ s/:/: /g" $FILE
+  sed -i "/,[a-z\"']/ s/,/, /g" $FILE
 }
+
 
 # Check if the directory entered exists. 
 # Then find & store all the files with '.js' extension.

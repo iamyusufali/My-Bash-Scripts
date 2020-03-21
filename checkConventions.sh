@@ -6,31 +6,39 @@ read -p "Enter directory name: " MAINDIR
 
 
 # To correct unwanted space 
-function correctUnwantedSpace () {
-  sed -i 's|  (| (|g' $FILE
-  sed -i 's|)  |) |g' $FILE
-  sed -i 's|  }| }|g' $FILE
-  sed -i 's|{  |{ |g' $FILE
-  sed -i 's|=  {|= {|g' $FILE
-  sed -i 's|,  |, |g' $FILE
-  sed -i 's|:  |: |g' $FILE
-  sed -i 's| ;|;|g' $FILE
-  sed -i 's| \.|.|g' $FILE
-}
+# function correctUnwantedSpace () {
+#   sed -i 's|  (| (|g' $FILE
+#   sed -i 's|)  |) |g' $FILE
+#   sed -i 's|  }| }|g' $FILE
+#   sed -i 's|{  |{ |g' $FILE
+#   sed -i 's|=  {|= {|g' $FILE
+#   sed -i 's|,  |, |g' $FILE
+#   sed -i 's|:  |: |g' $FILE
+#   sed -i 's| ;|;|g' $FILE
+#   sed -i 's| \.|.|g' $FILE
+#   sed -i 's| }|}|g' $FILE
+# }
 
 
-# To add Indentation
+# # To add Indentation
+# function addIndentation () {
+#   sed -i 's|(| (|g' $FILE
+#   sed -i 's|)|) |g' $FILE
+#   sed -i 's|}| }|g' $FILE
+#   sed -i 's|{|{ |g' $FILE
+#   sed -i 's|={|= {|g' $FILE
+#   sed -i 's|,|, |g' $FILE
+#   sed -i 's|:|: |g' $FILE
+#   correctUnwantedSpace
+# }
+
+
+# Add Indentation using RegEx pattern
 function addIndentation () {
-  sed -i 's|(| (|g' $FILE
-  sed -i 's|)|) |g' $FILE
-  sed -i 's|}| }|g' $FILE
-  sed -i 's|{|{ |g' $FILE
-  sed -i 's|={|= {|g' $FILE
-  sed -i 's|,|, |g' $FILE
-  sed -i 's|:|: |g' $FILE
-  correctUnwantedSpace
+  sed -i '/[a-z](){/ s/(){/ () {/g' $FILE
+  sed -i '/{[a-z]/ s/{/{ /g' $FILE
+  sed -i '/["]}/ s/}/ }/g' $FILE
 }
-
 
 # Check if the directory entered exists. 
 # Then find & store all the files with '.js' extension.
